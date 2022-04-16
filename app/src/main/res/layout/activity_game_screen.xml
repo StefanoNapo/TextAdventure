@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#252020"
+    tools:context=".GameScreen">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#453838"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/gameImageView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="3"
+            app:srcCompat="@drawable/sign" />
+
+        <TextView
+            android:id="@+id/gameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="This is Where YOUR story starts. Here is where you begin to forge your destiny!"
+            android:textColor="#CFC8C8"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/choiseButton1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_weight="1"
+            android:text="Button"
+            android:textColor="#CFC8C8"
+            app:backgroundTint="#852B0443" />
+
+        <Button
+            android:id="@+id/choiseButton2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_weight="1"
+            android:text="Button"
+            android:textColor="#CFC8C8"
+            app:backgroundTint="#852B0443" />
+
+        <Button
+            android:id="@+id/choiseButton3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_weight="1"
+            android:text="Button"
+            android:textColor="#CFC8C8"
+            app:backgroundTint="#852B0443" />
+
+        <Button
+            android:id="@+id/choiseButton4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="50dp"
+            android:layout_weight="1"
+            android:text="Button"
+            android:textColor="#CFC8C8"
+            android:textSize="14dp"
+            app:backgroundTint="#852B0443" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
