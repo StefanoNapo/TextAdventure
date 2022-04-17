@@ -132,7 +132,12 @@ class Story (val gs:GameScreen){
 
     fun fairy(){
         gs.gameImageView.setImageResource(R.drawable.fairy)
-        gs.gameTextView.setText("You find a fairy and she says to you: \n\"Hello adventurer, if you are in need of my magic just tell me\"")
+        if(isEnchanted) {
+            gs.gameTextView.setText("I gave my best into that sword \n Hope it can serve you well.")
+        }
+        else{
+            gs.gameTextView.setText("You find a fairy and she says to you: \n\"Hello adventurer, if you are in need of my magic just tell me\"")
+        }
 
 
         gs.choiseButton1.setText("Go Back to the SECOND crossroad")
@@ -177,7 +182,12 @@ class Story (val gs:GameScreen){
 
     fun merchant(){
         gs.gameImageView.setImageResource(R.drawable.merchant)
-        gs.gameTextView.setText("You cross path with the merchant and he tells you: \n\"I can tell that your are looking for glory but...\nWithout a weapon that is not going to be an easy task.\n I can sell you one if you find some gold for me.\"")
+        if(hasSword) {
+            gs.gameTextView.setText("I sold you my last sword. \n Greatest steel of this lands...if you ask me of course!")
+        }
+        else{
+            gs.gameTextView.setText("You cross path with the merchant and he tells you: \n\"I can tell that your are looking for glory but...\nWithout a weapon that is not going to be an easy task.\n I can sell you one if you find some gold for me.\"")
+        }
 
 
         gs.choiseButton1.setText("Go Back to the SECOND crossroad")
@@ -221,7 +231,14 @@ class Story (val gs:GameScreen){
 
     fun tower(){
         gs.gameImageView.setImageResource(R.drawable.tower)
-        gs.gameTextView.setText("You got in front of you an abandon tower...it may have something that could help you...")
+
+        if(hasGold || hasSword) {
+            gs.gameTextView.setText("There is nothing else that you can make use of here")
+        }
+        else{
+            gs.gameTextView.setText("You got in front of you an abandon tower...it may have something that could help you...")
+        }
+
 
         gs.choiseButton1.setText("Go Inside")
         gs.choiseButton2.setText("Go Back")
@@ -277,7 +294,13 @@ class Story (val gs:GameScreen){
     fun cave(){
 
         gs.gameImageView.setImageResource(R.drawable.cave)
-        gs.gameTextView.setText("You find a cave...\nand it looks that something could be inside")
+        if(hasAxe) {
+            gs.gameTextView.setText("There is nothing else that you can make use of here")
+        }
+        else{
+            gs.gameTextView.setText("You find a cave...\nand it looks that something could be inside")
+        }
+
 
         gs.choiseButton1.setText("Look inside")
         gs.choiseButton2.setText("Go Back")
