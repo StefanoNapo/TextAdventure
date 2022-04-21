@@ -1,10 +1,15 @@
+/* Text Adventure Game
+* This is simple text game that i made to get myself more experience with android studio and with
+* Kotlin.
+*  Author Stefano Napolitano.
+*/
 package com.example.textadventure
 import android.view.View
 import androidx.core.app.ActivityCompat.finishAffinity
 import kotlinx.android.synthetic.main.activity_game_screen.*
 import kotlinx.android.synthetic.main.activity_title_screen.*
 
-
+// This class is going to be the one that determines the interactions with the buttons of this game.
 class Story (val gs:GameScreen){
 
     var nextPosition1 = ""
@@ -18,6 +23,7 @@ class Story (val gs:GameScreen){
     var isEnchanted = false
 
     fun selectPosition(position: String) {
+    //function that determine base on the input from the click of one button what other function should go next
         when (position) {
             "startingPoint" -> startingPoint()
             "sign" -> sign()
@@ -41,8 +47,8 @@ class Story (val gs:GameScreen){
         }
     }
 
-    fun showAllButtons(){
-
+    private fun showAllButtons(){
+    //this is use to make all the buttons visible again
         gs.choiseButton1.setVisibility(View.VISIBLE)
         gs.choiseButton2.setVisibility(View.VISIBLE)
         gs.choiseButton3.setVisibility(View.VISIBLE)
@@ -50,7 +56,7 @@ class Story (val gs:GameScreen){
     }
 
     fun startingPoint(){
-
+    //this is the first function of the game and after the click of a button is going to use the selectOption to go into others
         gs.gameImageView.setImageResource(R.drawable.sign)
         gs.gameTextView.setText("You are walking down a road. And you see a wooden sign nearby.\n\n What will you do now?")
 
@@ -68,8 +74,8 @@ class Story (val gs:GameScreen){
 
     }
 
-    fun dead(){
-
+    private fun dead(){
+    //Basically resets the game after you press the only button visible.
         hasGold = false
         hasSword = false
         hasAxe = false
@@ -93,8 +99,8 @@ class Story (val gs:GameScreen){
         nextPosition4 = ""
     }
 
-    fun sign(){
-
+    private fun sign(){
+    //Sign in the starting point to give some clues to the player
         gs.gameImageView.setImageResource(R.drawable.signcloseup)
         gs.gameTextView.setText("The sign reads: \n\n \"DRAGON AHEAD!!!\"")
 
@@ -113,7 +119,8 @@ class Story (val gs:GameScreen){
         nextPosition4 = ""
     }
 
-    fun crossroad(){
+    private fun crossroad(){
+    //Also called in game Second Crossroad is the link into the options that gives the player the tools to beat the game.
         gs.gameImageView.setImageResource(R.drawable.crossroadtwo)
         gs.gameTextView.setText("You walk to the West and you find an other crossroad\n What will you do now?")
 
@@ -130,7 +137,8 @@ class Story (val gs:GameScreen){
         nextPosition4 = "startingPoint"
     }
 
-    fun fairy(){
+    private fun fairy(){
+    //This gives the player the enchantment needed to defeat the dragon the final peace to beat the game
         gs.gameImageView.setImageResource(R.drawable.fairy)
         if(isEnchanted) {
             gs.gameTextView.setText("I gave my best into that sword \n Hope it can serve you well.")
@@ -165,7 +173,8 @@ class Story (val gs:GameScreen){
         nextPosition4 = ""
     }
 
-    fun enchantedSword(){
+    private fun enchantedSword(){
+    //When the player bring the sword to the fairy and give it to her it prompt this interaction
         gs.gameImageView.setImageResource(R.drawable.enchantedsword)
         gs.gameTextView.setText("The fairy looks at your sword and chant a spell while she covers the blade with magic dusts. \nAnd then says: \"I hope this helps you in your most important fight.\"")
 
@@ -180,7 +189,8 @@ class Story (val gs:GameScreen){
 
     }
 
-    fun merchant(){
+    private fun merchant(){
+    //after the player gets the gold and brings it here he can buy a sword to progress in the game
         gs.gameImageView.setImageResource(R.drawable.merchant)
         if(hasSword) {
             gs.gameTextView.setText("I sold you my last sword. \n Greatest steel of this lands...if you ask me of course!")
@@ -215,7 +225,8 @@ class Story (val gs:GameScreen){
         nextPosition4 = ""
     }
 
-    fun sword(){
+    private fun sword(){
+    //This gives the player a sword after he trades the gold with the merchant
         gs.gameImageView.setImageResource(R.drawable.sword)
         gs.gameTextView.setText("The merchant takes the sack and inspect the coins. \nThen says: \"Well this should be enough for this Sword. Wish you the best at your journey.\" \n And he brings you his sword.")
 
@@ -229,7 +240,9 @@ class Story (val gs:GameScreen){
         nextPosition2 = "startingPoint"
     }
 
-    fun tower(){
+    private fun tower(){
+    //here is where the player can get the gold for the sword
+
         gs.gameImageView.setImageResource(R.drawable.tower)
 
         if(hasGold || hasSword) {
@@ -258,7 +271,9 @@ class Story (val gs:GameScreen){
         nextPosition4 = ""
     }
 
-    fun undeads(){
+    private fun undeads(){
+    //Actives when the player enters the tower and gives te option to take the gold.
+
         gs.gameImageView.setImageResource(R.drawable.undeads)
         gs.gameTextView.setText("You go inside the tower and manage to see not too far from you a sack with some coins in the floor\nBut at the same time something starts moving towards you...\nRotten undead bodies that wants your flesh!\nWhat will you do?")
 
@@ -276,7 +291,9 @@ class Story (val gs:GameScreen){
         nextPosition4 = ""
     }
 
-    fun gold(){
+    private fun gold(){
+    //Gives the player after the undeads interaction the gold to buy the sword.
+
         hasGold = true
         gs.gameImageView.setImageResource(R.drawable.goldsack)
         gs.gameTextView.setText("You run for the sack, you manage to grave it and run as fast as you can to the exit.\nThe undeads almost catches you, but in the last moment you jump throw the door and one of the arms that follows you falls and burns for the sun.")
@@ -291,7 +308,8 @@ class Story (val gs:GameScreen){
         nextPosition2 = "startingPoint"
     }
 
-    fun cave(){
+    private fun cave(){
+    //Here is where the player gets the axe to be able to fight the dragon in the floor.
 
         gs.gameImageView.setImageResource(R.drawable.cave)
         if(hasAxe) {
@@ -319,7 +337,9 @@ class Story (val gs:GameScreen){
         nextPosition4 = ""
     }
 
-    fun ogre() {
+    private fun ogre() {
+    //Here if the player fights with a sword he can get the axe to fight the dragon
+
         gs.gameImageView.setImageResource(R.drawable.ogrecave)
         gs.gameTextView.setText("You enter the ogre house and he does not like visitors")
 
@@ -342,7 +362,9 @@ class Story (val gs:GameScreen){
         nextPosition4 = ""
     }
 
-    fun ogreKiller(){
+    private fun ogreKiller(){
+    //In this one the player gets the axe after defeating the ogre
+
         gs.gameImageView.setImageResource(R.drawable.axe)
         gs.gameTextView.setText("You killed the orc and found and Axe that could help you later, so you pick it up")
 
@@ -357,7 +379,9 @@ class Story (val gs:GameScreen){
 
     }
 
-    fun dragon(){
+    private fun dragon(){
+    //Here if the player completed everything that he needed to defeat the dragon if he do the correct actions he beats the game.
+
         gs.gameImageView.setImageResource(R.drawable.dragon)
         gs.gameTextView.setText("You are facing the mighty dragon!")
 
@@ -379,15 +403,17 @@ class Story (val gs:GameScreen){
         nextPosition4 = ""
     }
 
-    fun woundedDragon(){
+    private fun woundedDragon(){
+    //After throwing the axe the player has its last action to beat the game
         gs.gameImageView.setImageResource(R.drawable.dragon)
         gs.gameTextView.setText("The dragon is now wounded and falls into the ground")
 
         gs.choiseButton1.setText("Fight!")
-        gs.choiseButton2.setText("Run!")
+        gs.choiseButton2.setText("")
         gs.choiseButton3.setText("")
         gs.choiseButton4.setText("")
 
+        gs.choiseButton2.setVisibility(View.INVISIBLE)
         gs.choiseButton3.setVisibility(View.INVISIBLE)
         gs.choiseButton4.setVisibility(View.INVISIBLE)
 
@@ -398,12 +424,14 @@ class Story (val gs:GameScreen){
             nextPosition1 = "dead"
         }
 
-        nextPosition2 = "dead"
+        nextPosition2 = ""
         nextPosition3 = ""
         nextPosition4 = ""
     }
 
-    fun dragonKilled(){
+    private fun dragonKilled(){
+    //End of the game scene
+
         gs.gameImageView.setImageResource(R.drawable.knightwin)
         gs.gameTextView.setText("You killed the mighty dragon and save the village!!! \nThe King gives you the title of Knight and a great reward for your heroic deeds.\n\nThe End...for now")
 
